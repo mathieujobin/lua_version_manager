@@ -1,6 +1,8 @@
 Lua Version Manager
 -------------------
 
+This aim at solving running multiple lua in one environment
+
 I am new to Lua, and I am having problems understanding the support of Lua 5.3 with various tools. and how runtimes can not be mixed.
 
 I am using ArchLinux as my favorite distro, which comes with Lua 5.3 by default.
