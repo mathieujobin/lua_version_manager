@@ -10,24 +10,24 @@ function set_lua_path_to() {
 	export PATH=$PATH:/opt/openresty/bin/:/opt/openresty/nginx/sbin/ #Automatically added by openresty package
 
 
+	if [ -e $dest -a ! -d $dest ]; then # our destination already exist but it not a dir.
+		mv $dest $dest.`date +%s`.bak
+		mkdir -p $dest
+	elif [ ! -e $dest ]; then
+		# does not exist, lets create
+		mkdir -p $dest
+	fi
+
 	if [ -d $luabin ]; then # if luabin is a folder, this is a default install, we need to move it.
-		if [ -d $dest ]; then # our destination already exist.
-			if [ "$(ls -A $dest)" ]; then # and it is not empty.
-				# lets backup
-				mv $luabin $dest/bin.bak
-			else
-				# its empty, we can move is content instead.
-				rmdir $dest; mv $luabin $dest
-			fi
+		if [ "$(ls -A $dest)" ]; then # destination is not empty.
+			# lets backup
+			mv $luabin $dest/bin.`date +%s`.bak
 		else
-			# destination does not exist, lets move the current to its new place.
-			mkdir -p $dest; rmdir $dest; mv $luabin $dest
+			# its empty, we can move is content instead.
+			rmdir $dest; mv $luabin $dest
 		fi
-		# and symlink
-		ln -fsn $dest $luabin
 	elif [ ! -L $luabin -a -e $luabin ]; then # what? there is something else there..
 		# lets backup
-		mkdir -p $dest
 		mv $luabin $dest/bin.bak
 	fi
 	# and symlink
