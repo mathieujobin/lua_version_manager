@@ -57,9 +57,9 @@ function luavm() {
 }
 
 
-old_luarocks=`which luarocks`
 function luarocks() {
-	lua_version=`lua -v | sed 's/^Lua \([0-9]\.[0-9]\).*/\1/'`
+	# lua 5.1 return the version to stderr.
+	lua_version=`lua 2>&1 -v | sed 's/^Lua \([0-9]\.[0-9]\).*/\1/'`
 	mkdir -p ~/.luarocks/bins/$lua_version
-	$old_luarocks $*
+	luarocks-$lua_version $*
 }

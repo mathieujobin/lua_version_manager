@@ -5,7 +5,7 @@ I am new to Lua, and I am having problems understanding the support of Lua 5.3 w
 
 I am using ArchLinux as my favorite distro, which comes with Lua 5.3 by default.
 
-I install openresty, luarocks and then lapis and encountered some 5.1 versus 5.2 versus 5.3 incompatiblity... 
+I install openresty, luarocks and then lapis and encountered some 5.1 versus 5.2 versus 5.3 incompatiblity...
 
 Searching the web for similar problems, I found my 2-3 years old post asking for Lua 5.2 support. And also people wishing for an easy version switcher. And I could not find recent answers on that matter.
 
@@ -19,7 +19,7 @@ I am taking care of setting aliases for lua and luac
 And updating a symlink to the ~/.luarocks/bin
 
 I also wrote a quick wrapper around luarocks so that the version specific bin folder exist.
-but as I write this, I realize there isn't so much use of it. and it's only after writing it I found out about all the different luarocks package available on ArchLinux
+and the proper luarocks is being used.
 
 Install
 --------
@@ -36,7 +36,7 @@ index a355b0c..0ac6b6d 100644
 --- a/.bashrc
 +++ b/.bashrc
 @@ -7,3 +7,6 @@
- 
+
  alias ls='ls --color=auto'
  PS1='[\u@\h \W]\$ '
 +export VISUAL="vim"
